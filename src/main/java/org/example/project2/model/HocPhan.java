@@ -15,6 +15,10 @@ public class HocPhan {
     @ManyToOne
     @JoinColumn(name = "MaKhung", nullable = false)
     private KhungChuongTrinh khungChuongTrinh;
+    
+    @ManyToOne
+    @JoinColumn(name = "MaKhoi")
+    private KhoiKienThuc khoiKienThuc;
 
     @Column(name = "TenHocPhan", nullable = false)
     private String tenHocPhan;
@@ -56,6 +60,14 @@ public class HocPhan {
 
     public void setKhungChuongTrinh(KhungChuongTrinh khungChuongTrinh) {
         this.khungChuongTrinh = khungChuongTrinh;
+    }
+    
+    public KhoiKienThuc getKhoiKienThuc() {
+        return khoiKienThuc;
+    }
+
+    public void setKhoiKienThuc(KhoiKienThuc khoiKienThuc) {
+        this.khoiKienThuc = khoiKienThuc;
     }
     
     public Integer getSoTietLyThuyet() {

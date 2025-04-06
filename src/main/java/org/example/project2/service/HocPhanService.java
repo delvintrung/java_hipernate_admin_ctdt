@@ -1,8 +1,10 @@
 package org.example.project2.service;
 
 import org.example.project2.model.HocPhan;
+import org.example.project2.model.KhoiKienThuc;
 import org.example.project2.model.KhungChuongTrinh;
 import org.example.project2.repository.HocPhanRepository;
+import org.example.project2.repository.KhoiKienThucRepository;
 import org.example.project2.repository.KhungChuongTrinhRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +17,23 @@ public class HocPhanService {
 
     @Autowired
     private KhungChuongTrinhRepository khungChuongTrinhRepository;
+    
+    @Autowired
+    private KhoiKienThucRepository khoiKienThucRepository;
 
     public void themHocPhan() {
-        // Lấy khung chương trình (giả sử MaKhung = 1)
-        KhungChuongTrinh khung = khungChuongTrinhRepository.findById(1L)
+    	KhungChuongTrinh khung = khungChuongTrinhRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khung chương trình"));
 
-        // Thêm các học phần
+        // Lấy các khối kiến thức
+        KhoiKienThuc khoiGDTCQP = khoiKienThucRepository.findByTenKhoi("Kiến thức Giáo dục thể chất và Giáo dục quốc phòng và an ninh")
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy khối kiến thức"));
+        KhoiKienThuc khoiNgoaiNgu = khoiKienThucRepository.findByTenKhoi("Kiến thức Ngoại ngữ")
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy khối kiến thức"));
+        KhoiKienThuc khoiLyLuan = khoiKienThucRepository.findByTenKhoi("Kiến thức Lý luận chính trị")
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy khối kiến thức"));
+        KhoiKienThuc khoiDaiCuongKhac = khoiKienThucRepository.findByTenKhoi("Kiến thức giáo dục đại cương khác")
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy khối kiến thức"));
         HocPhan hp1 = new HocPhan();
         hp1.setMaHocPhan(861301L);
         hp1.setTenHocPhan("Triết học Mác – Lênin");
