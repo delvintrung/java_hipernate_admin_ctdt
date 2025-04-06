@@ -30,24 +30,6 @@
 
         @Override
         public void run(String... args) throws Exception {
-            ThongTinChung thongTinChung = new ThongTinChung();
-            thongTinChung.setProgramName("Công nghệ Thông tin");
-            thongTinChung.setProgramCode("CNTT2023");
-            thongTinChung.setDescription("Chương trình đào tạo ngành CNTT");
-            thongTinChung.setStartYear(2023);
-            thongTinChung.setDuration(4);
-            thongTinChung.setTotalCredits(120);
-
-            thongTinChungRepository.save(thongTinChung);
-
-            KhungChuongTrinh khungChuongTrinh = new KhungChuongTrinh();
-            khungChuongTrinh.setThongTinChung(thongTinChung);
-            khungChuongTrinh.setBlockName("Kiến thức đại cương");
-            khungChuongTrinh.setSemester(1);
-            khungChuongTrinh.setCredits(30);
-
-            khungChuongTrinhRepository.save(khungChuongTrinh);
-
             System.out.println("Dữ liệu đã được lưu vào database!");
         }
     }

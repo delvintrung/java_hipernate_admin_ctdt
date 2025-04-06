@@ -8,23 +8,17 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID")
-    private Long userId;
+    @Column(name = "MaUser")
+    private Long maUser;
 
-    @Column(name = "Username", unique = true, nullable = false)
-    private String username;
-
-    @Column(name = "Password", nullable = false)
-    private String password;
-
-    @Column(name = "FullName")
-    private String fullName;
+    @Column(name = "TenUser", nullable = false)
+    private String tenUser;
 
     @Column(name = "Email", unique = true)
     private String email;
 
-    @Column(name = "Role")
-    private String role;
+    @Column(name = "VaiTro")
+    private String vaiTro; // Ví dụ: "Giảng viên", "Quản lý"
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private GiangVien giangVien;
@@ -34,36 +28,20 @@ public class User {
     }
 
     // Getter và Setter
-    public Long getUserId() {
-        return userId;
+    public Long getMaUser() {
+        return maUser;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setMaUser(Long maUser) {
+        this.maUser = maUser;
     }
 
-    public String getUsername() {
-        return username;
+    public String getTenUser() {
+        return tenUser;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setTenUser(String tenUser) {
+        this.tenUser = tenUser;
     }
 
     public String getEmail() {
@@ -74,12 +52,12 @@ public class User {
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
+    public String getVaiTro() {
+        return vaiTro;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
     }
 
     public GiangVien getGiangVien() {

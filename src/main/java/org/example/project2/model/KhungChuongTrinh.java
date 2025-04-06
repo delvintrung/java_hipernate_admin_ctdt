@@ -9,21 +9,15 @@ public class KhungChuongTrinh {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "FrameworkID")
-    private Long frameworkId;
+    @Column(name = "MaKhung")
+    private Long maKhung;
 
     @ManyToOne
-    @JoinColumn(name = "ProgramID", nullable = false)
+    @JoinColumn(name = "MaCTDT", nullable = false)
     private ThongTinChung thongTinChung;
 
-    @Column(name = "BlockName")
-    private String blockName;
-
-    @Column(name = "Semester")
-    private Integer semester;
-
-    @Column(name = "Credits")
-    private Integer credits;
+    @Column(name = "MoTa", columnDefinition = "TEXT")
+    private String moTa;
 
     @OneToMany(mappedBy = "khungChuongTrinh", cascade = CascadeType.ALL)
     private List<HocPhan> hocPhans;
@@ -33,12 +27,12 @@ public class KhungChuongTrinh {
     }
 
     // Getter và Setter
-    public Long getFrameworkId() {
-        return frameworkId;
+    public Long getMaKhung() {
+        return maKhung;
     }
 
-    public void setFrameworkId(Long frameworkId) {
-        this.frameworkId = frameworkId;
+    public void setMaKhung(Long maKhung) {
+        this.maKhung = maKhung;
     }
 
     public ThongTinChung getThongTinChung() {
@@ -49,28 +43,12 @@ public class KhungChuongTrinh {
         this.thongTinChung = thongTinChung;
     }
 
-    public String getBlockName() {
-        return blockName;
+    public String getMoTa() {
+        return moTa;
     }
 
-    public void setBlockName(String blockName) {
-        this.blockName = blockName;
-    }
-
-    public Integer getSemester() {
-        return semester;
-    }
-
-    public void setSemester(Integer semester) {
-        this.semester = semester;
-    }
-
-    public Integer getCredits() {
-        return credits;
-    }
-
-    public void setCredits(Integer credits) {
-        this.credits = credits;
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
     }
 
     public List<HocPhan> getHocPhans() {

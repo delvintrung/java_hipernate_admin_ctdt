@@ -1,9 +1,6 @@
 package org.example.project2.model;
 
-
 import jakarta.persistence.*;
-
-import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -12,86 +9,64 @@ public class KeHoachDayHoc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TeachingPlanID")
-    private Long teachingPlanId;
+    @Column(name = "MaKeHoach")
+    private Long maKeHoach;
 
     @ManyToOne
-    @JoinColumn(name = "ProgramID", nullable = false)
-    private ThongTinChung thongTinChung;
+    @JoinColumn(name = "MaHocPhan", nullable = false)
+    private HocPhan hocPhan;
 
-    @Column(name = "Semester")
-    private Integer semester;
+    @Column(name = "HocKy", nullable = false)
+    private String hocKy;
 
-    @Column(name = "AcademicYear")
-    private String academicYear;
-
-    @Column(name = "StartDate")
-    private LocalDate startDate;
-
-    @Column(name = "EndDate")
-    private LocalDate endDate;
+    @Column(name = "NamHoc", nullable = false)
+    private String namHoc;
 
     @OneToMany(mappedBy = "keHoachDayHoc", cascade = CascadeType.ALL)
-    private List<KeHoachMoNhom> keHoachMonNhoms;
+    private List<KeHoachMoNhom> keHoachMoNhoms;
 
     // Constructor
     public KeHoachDayHoc() {
     }
 
     // Getter và Setter
-    public Long getTeachingPlanId() {
-        return teachingPlanId;
+    public Long getMaKeHoach() {
+        return maKeHoach;
     }
 
-    public void setTeachingPlanId(Long teachingPlanId) {
-        this.teachingPlanId = teachingPlanId;
+    public void setMaKeHoach(Long maKeHoach) {
+        this.maKeHoach = maKeHoach;
     }
 
-    public ThongTinChung getThongTinChung() {
-        return thongTinChung;
+    public HocPhan getHocPhan() {
+        return hocPhan;
     }
 
-    public void setThongTinChung(ThongTinChung thongTinChung) {
-        this.thongTinChung = thongTinChung;
+    public void setHocPhan(HocPhan hocPhan) {
+        this.hocPhan = hocPhan;
     }
 
-    public Integer getSemester() {
-        return semester;
+    public String getHocKy() {
+        return hocKy;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setHocKy(String hocKy) {
+        this.hocKy = hocKy;
     }
 
-    public String getAcademicYear() {
-        return academicYear;
+    public String getNamHoc() {
+        return namHoc;
     }
 
-    public void setAcademicYear(String academicYear) {
-        this.academicYear = academicYear;
+    public void setNamHoc(String namHoc) {
+        this.namHoc = namHoc;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public List<KeHoachMoNhom> getKeHoachMonHoms() {
+        return keHoachMoNhoms;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public List<KeHoachMoNhom> getKeHoachMonNhoms() {
-        return keHoachMonNhoms;
-    }
-
-    public void setKeHoachMonNhoms(List<KeHoachMoNhom> keHoachMoNhoms) {
-        this.keHoachMonNhoms = keHoachMoNhoms;
+    public void setKeHoachMonHoms(List<KeHoachMoNhom> keHoachMoNhoms) {
+        this.keHoachMoNhoms = keHoachMoNhoms;
     }
 }

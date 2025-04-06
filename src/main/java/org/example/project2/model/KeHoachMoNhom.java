@@ -9,27 +9,23 @@ public class KeHoachMoNhom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ClassPlanID")
-    private Long classPlanId;
+    @Column(name = "MaNhom")
+    private Long maNhom;
 
     @ManyToOne
-    @JoinColumn(name = "CourseID", nullable = false)
-    private HocPhan hocPhan;
-
-    @ManyToOne
-    @JoinColumn(name = "TeachingPlanID", nullable = false)
+    @JoinColumn(name = "MaKeHoach", nullable = false)
     private KeHoachDayHoc keHoachDayHoc;
 
-    @Column(name = "ClassCode", unique = true)
-    private String classCode;
+    @Column(name = "TenNhom", nullable = false)
+    private String tenNhom;
 
-    @Column(name = "MaxStudents")
-    private Integer maxStudents;
+    @Column(name = "SoLuongSV")
+    private Integer soLuongSV;
 
-    @Column(name = "Schedule", columnDefinition = "TEXT")
-    private String schedule;
+    @Column(name = "ThoiGian")
+    private String thoiGian;
 
-    @OneToMany(mappedBy = "keHoachMonNhom", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "keHoachMoNhom", cascade = CascadeType.ALL)
     private List<PhanCongGiangDay> phanCongGiangDays;
 
     // Constructor
@@ -37,20 +33,12 @@ public class KeHoachMoNhom {
     }
 
     // Getter và Setter
-    public Long getClassPlanId() {
-        return classPlanId;
+    public Long getMaNhom() {
+        return maNhom;
     }
 
-    public void setClassPlanId(Long classPlanId) {
-        this.classPlanId = classPlanId;
-    }
-
-    public HocPhan getHocPhan() {
-        return hocPhan;
-    }
-
-    public void setHocPhan(HocPhan hocPhan) {
-        this.hocPhan = hocPhan;
+    public void setMaNhom(Long maNhom) {
+        this.maNhom = maNhom;
     }
 
     public KeHoachDayHoc getKeHoachDayHoc() {
@@ -61,28 +49,28 @@ public class KeHoachMoNhom {
         this.keHoachDayHoc = keHoachDayHoc;
     }
 
-    public String getClassCode() {
-        return classCode;
+    public String getTenNhom() {
+        return tenNhom;
     }
 
-    public void setClassCode(String classCode) {
-        this.classCode = classCode;
+    public void setTenNhom(String tenNhom) {
+        this.tenNhom = tenNhom;
     }
 
-    public Integer getMaxStudents() {
-        return maxStudents;
+    public Integer getSoLuongSV() {
+        return soLuongSV;
     }
 
-    public void setMaxStudents(Integer maxStudents) {
-        this.maxStudents = maxStudents;
+    public void setSoLuongSV(Integer soLuongSV) {
+        this.soLuongSV = soLuongSV;
     }
 
-    public String getSchedule() {
-        return schedule;
+    public String getThoiGian() {
+        return thoiGian;
     }
 
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public void setThoiGian(String thoiGian) {
+        this.thoiGian = thoiGian;
     }
 
     public List<PhanCongGiangDay> getPhanCongGiangDays() {

@@ -1,4 +1,4 @@
-package org.example.project2.model;
+	package org.example.project2.model;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -9,42 +9,45 @@ public class HocPhan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CourseID")
-    private Long courseId;
+    @Column(name = "MaHocPhan")
+    private Long maHocPhan;
 
     @ManyToOne
-    @JoinColumn(name = "FrameworkID", nullable = false)
+    @JoinColumn(name = "MaKhung", nullable = false)
     private KhungChuongTrinh khungChuongTrinh;
 
-    @Column(name = "CourseCode", unique = true)
-    private String courseCode;
+    @Column(name = "TenHocPhan", nullable = false)
+    private String tenHocPhan;
 
-    @Column(name = "CourseName", nullable = false)
-    private String courseName;
+    @Column(name = "SoTinChi")
+    private Integer soTinChi;
+    
+    @Column(name = "SoTietLyThuyet") 
+    private Integer soTietLyThuyet;
 
-    @Column(name = "Credits")
-    private Integer credits;
-
-    @Column(name = "CourseType")
-    private String courseType;
+    @Column(name = "SoTietThucHanh") 
+    private Integer soTietThucHanh;
 
     @OneToOne(mappedBy = "hocPhan", cascade = CascadeType.ALL)
     private DeCuongChiTiet deCuongChiTiet;
 
     @OneToMany(mappedBy = "hocPhan", cascade = CascadeType.ALL)
-    private List<KeHoachMoNhom> keHoachMoNhoms;
+    private List<KeHoachDayHoc> keHoachDayHocs;
+    
+    @OneToMany(mappedBy = "hocPhan", cascade = CascadeType.ALL) 
+    private List<GiangVienHocPhan> giangVienHocPhans;
 
     // Constructor
     public HocPhan() {
     }
 
     // Getter và Setter
-    public Long getCourseId() {
-        return courseId;
+    public Long getMaHocPhan() {
+        return maHocPhan;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setMaHocPhan(Long maHocPhan) {
+        this.maHocPhan = maHocPhan;
     }
 
     public KhungChuongTrinh getKhungChuongTrinh() {
@@ -54,37 +57,37 @@ public class HocPhan {
     public void setKhungChuongTrinh(KhungChuongTrinh khungChuongTrinh) {
         this.khungChuongTrinh = khungChuongTrinh;
     }
-
-    public String getCourseCode() {
-        return courseCode;
+    
+    public Integer getSoTietLyThuyet() {
+        return soTietLyThuyet;
     }
 
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
+    public void setSoTietLyThuyet(Integer soTietLyThuyet) {
+        this.soTietLyThuyet = soTietLyThuyet;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public Integer getSoTietThucHanh() {
+        return soTietThucHanh;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setSoTietThucHanh(Integer soTietThucHanh) {
+        this.soTietThucHanh = soTietThucHanh;
     }
 
-    public Integer getCredits() {
-        return credits;
+    public String getTenHocPhan() {
+        return tenHocPhan;
     }
 
-    public void setCredits(Integer credits) {
-        this.credits = credits;
+    public void setTenHocPhan(String tenHocPhan) {
+        this.tenHocPhan = tenHocPhan;
     }
 
-    public String getCourseType() {
-        return courseType;
+    public Integer getSoTinChi() {
+        return soTinChi;
     }
 
-    public void setCourseType(String courseType) {
-        this.courseType = courseType;
+    public void setSoTinChi(Integer soTinChi) {
+        this.soTinChi = soTinChi;
     }
 
     public DeCuongChiTiet getDeCuongChiTiet() {
@@ -95,11 +98,11 @@ public class HocPhan {
         this.deCuongChiTiet = deCuongChiTiet;
     }
 
-    public List<KeHoachMoNhom> getKeHoachMoNhoms() {
-        return keHoachMoNhoms;
+    public List<KeHoachDayHoc> getKeHoachDayHocs() {
+        return keHoachDayHocs;
     }
 
-    public void setKeHoachMonNhoms(List<KeHoachMoNhom> keHoachMoNhoms) {
-        this.keHoachMoNhoms = keHoachMoNhoms;
+    public void setKeHoachDayHocs(List<KeHoachDayHoc> keHoachDayHocs) {
+        this.keHoachDayHocs = keHoachDayHocs;
     }
 }

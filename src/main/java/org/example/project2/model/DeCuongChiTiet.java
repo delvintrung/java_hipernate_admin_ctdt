@@ -8,36 +8,36 @@ public class DeCuongChiTiet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SyllabusID")
-    private Long syllabusId;
+    @Column(name = "MaDeCuong")
+    private Long maDeCuong;
 
     @OneToOne
-    @JoinColumn(name = "CourseID", nullable = false)
+    @JoinColumn(name = "MaHocPhan", nullable = false)
     private HocPhan hocPhan;
 
-    @Column(name = "Objectives", columnDefinition = "TEXT")
-    private String objectives;
+    @Column(name = "MucTieu", columnDefinition = "TEXT")
+    private String mucTieu;
 
-    @Column(name = "Content", columnDefinition = "TEXT")
-    private String content;
+    @Column(name = "NoiDung", columnDefinition = "TEXT")
+    private String noiDung;
 
-    @Column(name = "Assessment", columnDefinition = "TEXT")
-    private String assessment;
+    @Column(name = "DanhGia", columnDefinition = "TEXT")
+    private String danhGia;
 
-    @Column(name = "References", columnDefinition = "TEXT")
-    private String references;
+    @Column(name = "TaiLieuThamKhao", columnDefinition = "TEXT")
+    private String taiLieuThamKhao;
 
     // Constructor
     public DeCuongChiTiet() {
     }
 
     // Getter và Setter
-    public Long getSyllabusId() {
-        return syllabusId;
+    public Long getMaDeCuong() {
+        return maDeCuong;
     }
 
-    public void setSyllabusId(Long syllabusId) {
-        this.syllabusId = syllabusId;
+    public void setMaDeCuong(Long maDeCuong) {
+        this.maDeCuong = maDeCuong;
     }
 
     public HocPhan getHocPhan() {
@@ -48,35 +48,35 @@ public class DeCuongChiTiet {
         this.hocPhan = hocPhan;
     }
 
-    public String getObjectives() {
-        return objectives;
+    public String getMucTieu() {
+        return mucTieu;
     }
 
-    public void setObjectives(String objectives) {
-        this.objectives = objectives;
+    public void setMucTieu(String mucTieu) {
+        this.mucTieu = mucTieu;
     }
 
-    public String getContent() {
-        return content;
+    public String getNoiDung() {
+        return noiDung;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setNoiDung(String noiDung) {
+        this.noiDung = noiDung;
     }
 
-    public String getAssessment() {
-        return assessment;
+    public String getDanhGia() {
+        return danhGia;
     }
 
-    public void setAssessment(String assessment) {
-        this.assessment = assessment;
+    public void setDanhGia(String danhGia) {
+        this.danhGia = danhGia;
     }
 
-    public String getReferences() {
-        return references;
+    public String getTaiLieuThamKhao() {
+        return taiLieuThamKhao;
     }
 
-    public void setReferences(String references) {
-        this.references = references;
+    public void setTaiLieuThamKhao(String taiLieuThamKhao) {
+        this.taiLieuThamKhao = taiLieuThamKhao;
     }
 }

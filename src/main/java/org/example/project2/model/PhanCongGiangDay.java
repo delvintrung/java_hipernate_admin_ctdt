@@ -8,39 +8,39 @@ public class PhanCongGiangDay {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AssignmentID")
-    private Long assignmentId;
+    @Column(name = "MaPhanCong")
+    private Long maPhanCong;
 
     @ManyToOne
-    @JoinColumn(name = "ClassPlanID", nullable = false)
-    private KeHoachMoNhom keHoachMonNhom;
+    @JoinColumn(name = "MaNhom", nullable = false)
+    private KeHoachMoNhom keHoachMoNhom;
 
     @ManyToOne
-    @JoinColumn(name = "InstructorID", nullable = false)
+    @JoinColumn(name = "MaGiangVien", nullable = false)
     private GiangVien giangVien;
 
-    @Column(name = "Role")
-    private String role;
+    @Column(name = "ThoiGian")
+    private String thoiGian;
 
     // Constructor
     public PhanCongGiangDay() {
     }
 
     // Getter và Setter
-    public Long getAssignmentId() {
-        return assignmentId;
+    public Long getMaPhanCong() {
+        return maPhanCong;
     }
 
-    public void setAssignmentId(Long assignmentId) {
-        this.assignmentId = assignmentId;
+    public void setMaPhanCong(Long maPhanCong) {
+        this.maPhanCong = maPhanCong;
     }
 
-    public KeHoachMoNhom getKeHoachMonNhom() {
-        return keHoachMonNhom;
+    public KeHoachMoNhom getKeHoachMoNhom() {
+        return keHoachMoNhom;
     }
 
-    public void setKeHoachMonNhom(KeHoachMoNhom keHoachMonNhom) {
-        this.keHoachMonNhom = keHoachMonNhom;
+    public void setKeHoachMonHom(KeHoachMoNhom keHoachMoNhom) {
+        this.keHoachMoNhom = keHoachMoNhom;
     }
 
     public GiangVien getGiangVien() {
@@ -51,11 +51,11 @@ public class PhanCongGiangDay {
         this.giangVien = giangVien;
     }
 
-    public String getRole() {
-        return role;
+    public String getThoiGian() {
+        return thoiGian;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setThoiGian(String thoiGian) {
+        this.thoiGian = thoiGian;
     }
 }

@@ -1,9 +1,6 @@
 package org.example.project2.model;
 
-
 import jakarta.persistence.*;
-
-
 import java.util.List;
 
 @Entity
@@ -12,92 +9,56 @@ public class ThongTinChung {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ProgramID")
-    private Long programId;
+    @Column(name = "MaCTDT")
+    private Long maCTDT;
 
-    @Column(name = "ProgramName", nullable = false)
-    private String programName;
+    @Column(name = "TenCTDT", nullable = false)
+    private String tenCTDT;
 
-    @Column(name = "ProgramCode", unique = true)
-    private String programCode;
+    @Column(name = "NamBatDau")
+    private Integer namBatDau;
 
-    @Column(name = "Description", columnDefinition = "TEXT")
-    private String description;
-
-    @Column(name = "StartYear")
-    private Integer startYear;
-
-    @Column(name = "Duration")
-    private Integer duration;
-
-    @Column(name = "TotalCredits")
-    private Integer totalCredits;
+    @Column(name = "MoTa", columnDefinition = "TEXT")
+    private String moTa;
 
     @OneToMany(mappedBy = "thongTinChung", cascade = CascadeType.ALL)
     private List<KhungChuongTrinh> khungChuongTrinhs;
-
-    @OneToMany(mappedBy = "thongTinChung", cascade = CascadeType.ALL)
-    private List<KeHoachDayHoc> keHoachDayHocs;
 
     // Constructor
     public ThongTinChung() {
     }
 
     // Getter và Setter
-    public Long getProgramId() {
-        return programId;
+    public Long getMaCTDT() {
+        return maCTDT;
     }
 
-    public void setProgramId(Long programId) {
-        this.programId = programId;
+    public void setMaCTDT(Long maCTDT) {
+        this.maCTDT = maCTDT;
     }
 
-    public String getProgramName() {
-        return programName;
+    public String getTenCTDT() {
+        return tenCTDT;
     }
 
-    public void setProgramName(String programName) {
-        this.programName = programName;
+    public void setTenCTDT(String tenCTDT) {
+        this.tenCTDT = tenCTDT;
     }
 
-    public String getProgramCode() {
-        return programCode;
+    public Integer getNamBatDau() {
+        return namBatDau;
     }
 
-    public void setProgramCode(String programCode) {
-        this.programCode = programCode;
+    public void setNamBatDau(Integer namBatDau) {
+        this.namBatDau = namBatDau;
     }
 
-    public String getDescription() {
-        return description;
+    public String getMoTa() {
+        return moTa;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getStartYear() {
-        return startYear;
-    }
-
-    public void setStartYear(Integer startYear) {
-        this.startYear = startYear;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    public Integer getTotalCredits() {
-        return totalCredits;
-    }
-
-    public void setTotalCredits(Integer totalCredits) {
-        this.totalCredits = totalCredits;
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
     }
 
     public List<KhungChuongTrinh> getKhungChuongTrinhs() {
@@ -106,13 +67,5 @@ public class ThongTinChung {
 
     public void setKhungChuongTrinhs(List<KhungChuongTrinh> khungChuongTrinhs) {
         this.khungChuongTrinhs = khungChuongTrinhs;
-    }
-
-    public List<KeHoachDayHoc> getKeHoachDayHocs() {
-        return keHoachDayHocs;
-    }
-
-    public void setKeHoachDayHocs(List<KeHoachDayHoc> keHoachDayHocs) {
-        this.keHoachDayHocs = keHoachDayHocs;
     }
 }

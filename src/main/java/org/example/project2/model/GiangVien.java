@@ -1,8 +1,6 @@
 package org.example.project2.model;
 
-
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -11,21 +9,18 @@ public class GiangVien {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "InstructorID")
-    private Long instructorId;
+    @Column(name = "MaGiangVien")
+    private Long maGiangVien;
 
     @OneToOne
-    @JoinColumn(name = "UserID", nullable = false)
+    @JoinColumn(name = "MaUser", nullable = false)
     private User user;
 
-    @Column(name = "InstructorType")
-    private String instructorType;
+    @Column(name = "TenGiangVien", nullable = false)
+    private String tenGiangVien;
 
-    @Column(name = "Department")
-    private String department;
-
-    @Column(name = "Specialization")
-    private String specialization;
+    @Column(name = "LoaiGiangVien")
+    private String loaiGiangVien; // Ví dụ: "Cơ hữu", "Thỉnh giảng"
 
     @OneToMany(mappedBy = "giangVien", cascade = CascadeType.ALL)
     private List<PhanCongGiangDay> phanCongGiangDays;
@@ -35,12 +30,12 @@ public class GiangVien {
     }
 
     // Getter và Setter
-    public Long getInstructorId() {
-        return instructorId;
+    public Long getMaGiangVien() {
+        return maGiangVien;
     }
 
-    public void setInstructorId(Long instructorId) {
-        this.instructorId = instructorId;
+    public void setMaGiangVien(Long maGiangVien) {
+        this.maGiangVien = maGiangVien;
     }
 
     public User getUser() {
@@ -51,33 +46,28 @@ public class GiangVien {
         this.user = user;
     }
 
-    public String getInstructorType() {
-        return instructorType;
+    public String getTenGiangVien() {
+        return tenGiangVien;
     }
 
-    public void setInstructorType(String instructorType) {
-        this.instructorType = instructorType;
+    public void setTenGiangVien(String tenGiangVien) {
+        this.tenGiangVien = tenGiangVien;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getLoaiGiangVien() {
+        return loaiGiangVien;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setLoaiGiangVien(String loaiGiangVien) {
+        this.loaiGiangVien = loaiGiangVien;
     }
 
     public List<PhanCongGiangDay> getPhanCongGiangDays() {
         return phanCongGiangDays;
     }
+    
+    @OneToMany(mappedBy = "giangVien", cascade = CascadeType.ALL)
+    private List<GiangVienHocPhan> giangVienHocPhans;
 
     public void setPhanCongGiangDays(List<PhanCongGiangDay> phanCongGiangDays) {
         this.phanCongGiangDays = phanCongGiangDays;
