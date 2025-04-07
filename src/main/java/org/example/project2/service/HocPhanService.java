@@ -25,11 +25,11 @@ public class HocPhanService {
     @Autowired
     private KhoiKienThucRepository khoiKienThucRepository;
 
+    @Transactional
     public void themHocPhan() {
-    	KhungChuongTrinh khung = khungChuongTrinhRepository.findById(4L)
+        KhungChuongTrinh khung = khungChuongTrinhRepository.findById(13L)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khung chương trình"));
 
-        
         KhoiKienThuc khoiGDTCQP = khoiKienThucRepository.findByTenKhoi("Kiến thức Giáo dục thể chất và Giáo dục quốc phòng và an ninh")
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khối kiến thức"));
         KhoiKienThuc khoiNgoaiNgu = khoiKienThucRepository.findByTenKhoi("Kiến thức Ngoại ngữ")
@@ -38,6 +38,7 @@ public class HocPhanService {
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khối kiến thức"));
         KhoiKienThuc khoiDaiCuongKhac = khoiKienThucRepository.findByTenKhoi("Kiến thức giáo dục đại cương khác")
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khối kiến thức"));
+
         themHoacCapNhatHocPhan(861301L, "Triết học Mác – Lênin", 3, 45, 0, khung, khoiLyLuan);
         themHoacCapNhatHocPhan(861302L, "Kinh tế chính trị Mác – Lênin", 2, 30, 0, khung, khoiLyLuan);
         themHoacCapNhatHocPhan(861303L, "Chủ nghĩa xã hội khoa học", 2, 30, 0, khung, khoiLyLuan);
@@ -61,29 +62,26 @@ public class HocPhanService {
     private void themHoacCapNhatHocPhan(Long maHocPhan, String tenHocPhan, Integer soTinChi,
             Integer soTietLyThuyet, Integer soTietThucHanh,
             KhungChuongTrinh khung, KhoiKienThuc khoiKienThuc) {
-			Optional<HocPhan> existingHocPhan = hocPhanRepository.findById(maHocPhan);
-			HocPhan hocPhan;
-			
-			if (existingHocPhan.isPresent()) {
-			// Nếu đã tồn tại, cập nhật thông tin
-			hocPhan = existingHocPhan.get();
-			} else {
-			// Nếu chưa tồn tại, tạo mới
-			hocPhan = new HocPhan();
-			hocPhan.setMaHocPhan(maHocPhan);
-			}
+        Optional<HocPhan> existingHocPhan = hocPhanRepository.findById(maHocPhan);
+        HocPhan hocPhan;
+        
+        if (existingHocPhan.isPresent()) {
+            hocPhan = existingHocPhan.get();
+        } else {
+            hocPhan = new HocPhan();
+            hocPhan.setMaHocPhan(maHocPhan);
+        }
 
-			// Cập nhật các thông tin
-			hocPhan.setTenHocPhan(tenHocPhan);
-			hocPhan.setSoTinChi(soTinChi);
-			hocPhan.setSoTietLyThuyet(soTietLyThuyet);
-			hocPhan.setSoTietThucHanh(soTietThucHanh);
-			hocPhan.setKhungChuongTrinh(khung);
-			hocPhan.setKhoiKienThuc(khoiKienThuc);
-			
-			// Lưu hoặc cập nhật
-			hocPhanRepository.save(hocPhan);
-			}
+        hocPhan.setTenHocPhan(tenHocPhan);
+        hocPhan.setSoTinChi(soTinChi);
+        hocPhan.setSoTietLyThuyet(soTietLyThuyet);
+        hocPhan.setSoTietThucHanh(soTietThucHanh);
+        hocPhan.setKhungChuongTrinh(khung);
+        hocPhan.setKhoiKienThuc(khoiKienThuc);
+        
+        // Lưu hoặc cập nhật
+        hocPhanRepository.save(hocPhan);
+    }
     
     @Transactional
     public void deleteAll() {

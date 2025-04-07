@@ -1,7 +1,6 @@
 package org.example.project2.model;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "ctdt_kehoachdayhoc")
@@ -16,14 +15,15 @@ public class KeHoachDayHoc {
     @JoinColumn(name = "MaHocPhan", nullable = false)
     private HocPhan hocPhan;
 
-    @Column(name = "HocKy", nullable = false)
-    private String hocKy;
+    @Column(name = "HocKyThucHien", nullable = false)
+    private Integer hocKyThucHien = 1;
 
-    @Column(name = "NamHoc", nullable = false)
-    private String namHoc;
+    @ManyToOne
+    @JoinColumn(name = "MaHocPhanTienQuyet")
+    private HocPhan hocPhanTienQuyet;
 
-    @OneToMany(mappedBy = "keHoachDayHoc", cascade = CascadeType.ALL)
-    private List<KeHoachMoNhom> keHoachMoNhoms;
+    @Column(name = "GhiChuTienQuyet")
+    private String ghiChuTienQuyet;
 
     // Constructor
     public KeHoachDayHoc() {
@@ -46,27 +46,27 @@ public class KeHoachDayHoc {
         this.hocPhan = hocPhan;
     }
 
-    public String getHocKy() {
-        return hocKy;
+    public Integer getHocKyThucHien() {
+        return hocKyThucHien;
     }
 
-    public void setHocKy(String hocKy) {
-        this.hocKy = hocKy;
+    public void setHocKyThucHien(Integer hocKyThucHien) {
+        this.hocKyThucHien = hocKyThucHien;
     }
 
-    public String getNamHoc() {
-        return namHoc;
+    public HocPhan getHocPhanTienQuyet() {
+        return hocPhanTienQuyet;
     }
 
-    public void setNamHoc(String namHoc) {
-        this.namHoc = namHoc;
+    public void setHocPhanTienQuyet(HocPhan hocPhanTienQuyet) {
+        this.hocPhanTienQuyet = hocPhanTienQuyet;
     }
 
-    public List<KeHoachMoNhom> getKeHoachMonHoms() {
-        return keHoachMoNhoms;
+    public String getGhiChuTienQuyet() {
+        return ghiChuTienQuyet;
     }
 
-    public void setKeHoachMonHoms(List<KeHoachMoNhom> keHoachMoNhoms) {
-        this.keHoachMoNhoms = keHoachMoNhoms;
+    public void setGhiChuTienQuyet(String ghiChuTienQuyet) {
+        this.ghiChuTienQuyet = ghiChuTienQuyet;
     }
 }

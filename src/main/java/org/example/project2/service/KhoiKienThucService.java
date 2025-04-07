@@ -20,7 +20,7 @@ public class KhoiKienThucService {
 
     public void themKhoiKienThuc() {
         // Lấy khung chương trình (giả sử MaKhung = 1)
-        KhungChuongTrinh khung = khungChuongTrinhRepository.findById(4L)
+        KhungChuongTrinh khung = khungChuongTrinhRepository.findById(13L)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khung chương trình"));
 
         // I. Khối kiến thức giáo dục đại cương

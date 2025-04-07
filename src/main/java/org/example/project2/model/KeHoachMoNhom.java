@@ -1,7 +1,6 @@
 package org.example.project2.model;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "ctdt_kehoachmonhom")
@@ -24,9 +23,6 @@ public class KeHoachMoNhom {
 
     @Column(name = "ThoiGian")
     private String thoiGian;
-
-    @OneToMany(mappedBy = "keHoachMoNhom", cascade = CascadeType.ALL)
-    private List<PhanCongGiangDay> phanCongGiangDays;
 
     // Constructor
     public KeHoachMoNhom() {
@@ -71,13 +67,5 @@ public class KeHoachMoNhom {
 
     public void setThoiGian(String thoiGian) {
         this.thoiGian = thoiGian;
-    }
-
-    public List<PhanCongGiangDay> getPhanCongGiangDays() {
-        return phanCongGiangDays;
-    }
-
-    public void setPhanCongGiangDays(List<PhanCongGiangDay> phanCongGiangDays) {
-        this.phanCongGiangDays = phanCongGiangDays;
     }
 }
