@@ -28,16 +28,13 @@ public class KhungChuongTrinhService {
      */
     @Transactional
     public KhungChuongTrinh themKhungChuongTrinh(Long maCTDT, String moTa) {
-        // Tìm ThongTinChung theo maCTDT
         ThongTinChung thongTinChung = thongTinChungRepository.findById(maCTDT)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy thông tin chương trình với MaCTDT: " + maCTDT));
 
-        // Tạo khung chương trình mới
         KhungChuongTrinh khung = new KhungChuongTrinh();
         khung.setThongTinChung(thongTinChung);
         khung.setMoTa(moTa);
 
-        // Lưu vào cơ sở dữ liệu
         return khungChuongTrinhRepository.save(khung);
     }
 
@@ -92,14 +89,15 @@ public class KhungChuongTrinhService {
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khung chương trình với MaKhung: " + maKhung));
     }
 
-    /**
-     * Lấy khung chương trình theo ThongTinChung
-     * @param maCTDT Mã chương trình đào tạo
-     * @return Danh sách khung chương trình
-     */
+   
     public List<KhungChuongTrinh> getKhungChuongTrinhByThongTinChung(Long maCTDT) {
         ThongTinChung thongTinChung = thongTinChungRepository.findById(maCTDT)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy thông tin chương trình với MaCTDT: " + maCTDT));
         return thongTinChung.getKhungChuongTrinhs();
+    }
+    
+    @Transactional
+    public void deleteAll() {
+        khungChuongTrinhRepository.deleteAll();
     }
 }

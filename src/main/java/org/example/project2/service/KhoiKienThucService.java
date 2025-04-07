@@ -7,6 +7,8 @@ import org.example.project2.repository.KhungChuongTrinhRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class KhoiKienThucService {
 
@@ -18,7 +20,7 @@ public class KhoiKienThucService {
 
     public void themKhoiKienThuc() {
         // Lấy khung chương trình (giả sử MaKhung = 1)
-        KhungChuongTrinh khung = khungChuongTrinhRepository.findById(1L)
+        KhungChuongTrinh khung = khungChuongTrinhRepository.findById(4L)
                 .orElseThrow(() -> new RuntimeException("Không tìm thấy khung chương trình"));
 
         // I. Khối kiến thức giáo dục đại cương
@@ -99,5 +101,12 @@ public class KhoiKienThucService {
         khoiChuyenNganh.setSoTinChiTuChon(15);
         khoiChuyenNganh.setKhoiCha(khoiChuyenNghiep);
         khoiKienThucRepository.save(khoiChuyenNganh);
+    }
+    
+    @Transactional
+    public void deleteAll() {
+        khoiKienThucRepository.deleteAllChildren();
+
+        khoiKienThucRepository.deleteAllParents();
     }
 }

@@ -8,6 +8,8 @@ import org.example.project2.repository.KeHoachDayHocRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class KeHoachDayHocService {
 
@@ -54,5 +56,10 @@ public class KeHoachDayHocService {
         keHoach.setHocKy(hocKy);
         keHoach.setNamHoc(namHoc);
         keHoachDayHocRepository.save(keHoach);
+    }
+    
+    @Transactional
+    public void deleteAll() {
+        keHoachDayHocRepository.deleteAll();
     }
 }

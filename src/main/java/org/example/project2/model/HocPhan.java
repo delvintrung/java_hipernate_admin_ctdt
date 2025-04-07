@@ -7,8 +7,7 @@ import java.util.List;
 @Table(name = "ctdt_hocphan")
 public class HocPhan {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
     @Column(name = "MaHocPhan")
     private Long maHocPhan;
 

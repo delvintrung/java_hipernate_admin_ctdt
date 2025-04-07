@@ -5,6 +5,8 @@ import org.example.project2.repository.ThongTinChungRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ThongTinChungService {
 
@@ -27,5 +29,10 @@ public class ThongTinChungService {
         thongTinChung.setBanHanh("Theo Quyết định số .../.../QĐ-DHSG ngày ... tháng ... năm 2020 của Hiệu trưởng Trường Đại học Sài Gòn");
 
         thongTinChungRepository.save(thongTinChung);
+    }
+    
+    @Transactional
+    public void deleteAll() {
+        thongTinChungRepository.deleteAll();
     }
 }

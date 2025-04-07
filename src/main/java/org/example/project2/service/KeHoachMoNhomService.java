@@ -8,6 +8,8 @@ import org.example.project2.repository.KeHoachMoNhomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class KeHoachMoNhomService {
 
@@ -17,7 +19,7 @@ public class KeHoachMoNhomService {
     @Autowired
     private KeHoachMoNhomRepository keHoachMonHomRepository;
 
-    public void themKeHoachMonHom() {
+    public void themKeHoachMoNhom() {
         // Học kỳ 1
         themNhomLop(861301L, "Nhóm 1", 50, "T2 1-3");
         themNhomLop(861302L, "Nhóm 1", 50, "T3 1-3");
@@ -55,5 +57,10 @@ public class KeHoachMoNhomService {
         nhom.setSoLuongSV(soLuongSV);
         nhom.setThoiGian(thoiGian);
         keHoachMonHomRepository.save(nhom);
+    }
+    
+    @Transactional
+    public void deleteAll() {
+        keHoachMonHomRepository.deleteAll();
     }
 }
