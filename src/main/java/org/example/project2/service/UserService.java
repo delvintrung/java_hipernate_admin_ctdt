@@ -17,20 +17,26 @@ public class UserService {
     @Transactional
     public void themUser() {
         // Thêm user 1
-    	themHoacCapNhatUser(1, "Nguyễn Văn A");
+        themHoacCapNhatUser("Nguyễn Văn A", "nguyenvana@example.com", "GIANG_VIEN");
         // Thêm user 2
-        themHoacCapNhatUser(2, "Trần Thị B");
+        themHoacCapNhatUser("Trần Thị B", "tranthib@example.com", "GIANG_VIEN");
         // Thêm user 3
-        themHoacCapNhatUser(3, "Lê Văn C");
+        themHoacCapNhatUser("Lê Văn C", "levanc@example.com", "GIANG_VIEN");
         // Thêm user 4
-        themHoacCapNhatUser(4, "Phạm Thị D");
+        themHoacCapNhatUser("Phạm Thị D", "phamthid@example.com", "GIANG_VIEN");
         // Thêm user 5
-        themHoacCapNhatUser(5, "Hoàng Văn E");
+        themHoacCapNhatUser("Hoàng Văn E", "hoangvane@example.com", "GIANG_VIEN");
     }
 
-    private void themHoacCapNhatUser(Integer maUser, String tenUser) {
-        // Kiểm tra xem user đã tồn tại chưa
-        Optional<User> existingUser = userRepository.findById(maUser);
+    private void themHoacCapNhatUser(String tenUser, String email, String vaiTro) {
+        // Kiểm tra xem user đã tồn tại chưa (dựa trên email)
+        Optional<User> existingUser = userRepository.findById(
+                userRepository.findAll().stream()
+                        .filter(user -> user.getEmail() != null && user.getEmail().equals(email))
+                        .map(User::getMaUser)
+                        .findFirst()
+                        .orElse(null)
+        );
         User user;
 
         if (existingUser.isPresent()) {
@@ -39,14 +45,25 @@ public class UserService {
         } else {
             // Nếu chưa tồn tại, tạo mới
             user = new User();
-            user.setMaUser(maUser);
         }
 
         // Cập nhật thông tin
         user.setTenUser(tenUser);
+        user.setEmail(email);
+        user.setVaiTro(vaiTro);
 
         // Lưu hoặc cập nhật
         userRepository.save(user);
+    }
+
+    
+    @Transactional
+    public User taoUserMoi(String tenUser, String email) {
+        User user = new User();
+        user.setTenUser(tenUser);
+        user.setEmail(email);
+        user.setVaiTro("GIANG_VIEN");
+        return userRepository.save(user);
     }
 
     @Transactional

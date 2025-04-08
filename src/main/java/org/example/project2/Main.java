@@ -13,8 +13,10 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import org.example.project2.GUIComponent.ThongTinChung;
+import org.example.project2.GUIComponent.GiangVienGUI;
+import org.example.project2.GUIComponent.ThongTinChungGUI;
 import org.example.project2.GUIComponent.SideBar.SideMenu;
+import org.example.project2.model.GiangVienHocPhan;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -29,7 +31,8 @@ public class Main extends JFrame {
 	public JPanel Content = new JPanel();
 	public CardLayout cardLayout;
 	public SideMenu sideMenu;
-	private ThongTinChung thongtinchungPanel;
+	private ThongTinChungGUI thongtinchungPanel;
+	private GiangVienGUI giangvienPanel;
 	/**
 	 * Launch the application.
 	 */
@@ -59,16 +62,18 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
 		setTitle("Admin");
-		setSize(1000,600);
+		setSize(1200,700);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
-		thongtinchungPanel = new ThongTinChung(this);
+		thongtinchungPanel = new ThongTinChungGUI(this);
+		giangvienPanel = new GiangVienGUI(this);
 		
 		cardLayout = new CardLayout();
 	    Content.setLayout(cardLayout);
-	    Content.setBounds(248, 0, 738, 563);
+	    Content.setBounds(248, 0, 938, 563);
 	    
-	    Content.add(thongtinchungPanel, "Thong Tin Chung");
+	    Content.add(thongtinchungPanel, "dashboard");
+	    Content.add(giangvienPanel, "lecturer");
 	    getContentPane().add(Content);
 	    
 	    
@@ -82,21 +87,6 @@ public class Main extends JFrame {
         cardLayout.show(Content, panelName);
     }
 	
-	private void fetchData(String url) {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        new Thread(() -> {
-            try (Response response = client.newCall(request).execute()) {
-                String result = response.body().string();
-                SwingUtilities.invokeLater(() -> textArea.setText(result));
-            } catch (Exception e) {
-                e.printStackTrace();
-                SwingUtilities.invokeLater(() -> textArea.setText("Lỗi gọi API"));
-            }
-        }).start();
-    }
+	
 
 }

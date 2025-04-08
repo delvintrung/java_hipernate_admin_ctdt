@@ -22,7 +22,8 @@ public class SideMenu extends JPanel {
     Color selectedItemFontColor = new Color(0, 0, 0);
     JPanel centerPanel = new JPanel();
 	String[][] menu = {
-	        {"Thong tin chung", "dashboard", "business.png"},
+	        {"Thông tin chung", "dashboard", "business.png"},
+	        {"Giảng Viên", "lecturer", "business.png"}
 	    };
 
 	/**
@@ -42,12 +43,12 @@ public class SideMenu extends JPanel {
                 }
             });
             centerPanel.add(menuItems[i]);
-//            if(i == 0) {
-//                centerPanel.add(menuItems[i]);
-//                continue;
-//            }
-//            if(i==4)
-//                continue;
+            if(i == 0) {
+                centerPanel.add(menuItems[i]);
+                continue;
+            }
+            if(i==4)
+                continue;
             
         }
         menuItems[0].isSelected = true;
@@ -77,7 +78,7 @@ public class SideMenu extends JPanel {
 	private void initComponents() {
 		// TODO Auto-generated method stub
 		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(250, 600));
+		setPreferredSize(new Dimension(250, 700));
 		setBackground(new Color(255, 255, 255));
 	}
 

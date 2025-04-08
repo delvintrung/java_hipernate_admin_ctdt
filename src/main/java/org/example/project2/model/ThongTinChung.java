@@ -3,6 +3,8 @@ package org.example.project2.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "ctdt_thongtinchung")
 public class ThongTinChung {
@@ -21,25 +23,25 @@ public class ThongTinChung {
     @Column(name = "MoTa", columnDefinition = "TEXT")
     private String moTa;
     
-    @Column(name = "Bac") // Thêm trường Bậc
+    @Column(name = "Bac") 
     private String bac;
 
-    @Column(name = "LoaiBang") // Thêm trường Loại bằng
+    @Column(name = "LoaiBang")
     private String loaiBang;
 
-    @Column(name = "LoaiHinhDaoTao") // Thêm trường Loại hình đào tạo
+    @Column(name = "LoaiHinhDaoTao")
     private String loaiHinhDaoTao;
 
-    @Column(name = "ThoiGian") // Thêm trường Thời gian
+    @Column(name = "ThoiGian")
     private String thoiGian;
 
-    @Column(name = "SoTinChiToiThieu") // Thêm trường Số tín chỉ tối thiểu
+    @Column(name = "SoTinChiToiThieu") 
     private Integer soTinChiToiThieu;
 
-    @Column(name = "KhoaQuanLy") // Thêm trường Khoa quản lý
+    @Column(name = "KhoaQuanLy")
     private String khoaQuanLy;
 
-    @Column(name = "NgonNgu") // Thêm trường Ngôn ngữ
+    @Column(name = "NgonNgu")
     private String ngonNgu;
     
     @Column(name = "Website") 
@@ -49,6 +51,7 @@ public class ThongTinChung {
     private String banHanh;
 
     @OneToMany(mappedBy = "thongTinChung", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<KhungChuongTrinh> khungChuongTrinhs;
 
     // Constructor

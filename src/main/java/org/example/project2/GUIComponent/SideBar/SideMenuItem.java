@@ -62,6 +62,7 @@ public class SideMenuItem extends JPanel implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println(this.target);
 		main.switchCard(this.target);
 	}
 

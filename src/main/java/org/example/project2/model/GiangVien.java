@@ -3,6 +3,9 @@ package org.example.project2.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "ctdt_giangvien")
 public class GiangVien {
@@ -14,13 +17,14 @@ public class GiangVien {
 
     @OneToOne
     @JoinColumn(name = "MaUser", nullable = false)
+    @JsonManagedReference
     private User user;
 
     @Column(name = "TenGiangVien", nullable = false)
     private String tenGiangVien;
 
     @Column(name = "LoaiGiangVien")
-    private String loaiGiangVien; // Ví dụ: "Cơ hữu", "Thỉnh giảng"
+    private String loaiGiangVien;
 
     @OneToMany(mappedBy = "giangVien", cascade = CascadeType.ALL)
     private List<PhanCongGiangDay> phanCongGiangDays;

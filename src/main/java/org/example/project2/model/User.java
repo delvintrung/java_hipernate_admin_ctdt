@@ -10,8 +10,14 @@ public class User {
     @Column(name = "MaUser")
     private Integer maUser;
 
-    @Column(name = "TenUser", nullable = false)
+    @Column(name = "Email", length = 255)
+    private String email;
+
+    @Column(name = "TenUser", length = 255)
     private String tenUser;
+
+    @Column(name = "VaiTro", length = 255)
+    private String vaiTro;
 
     // Constructor
     public User() {
@@ -32,5 +38,19 @@ public class User {
 
     public void setTenUser(String tenUser) {
         this.tenUser = tenUser;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getVaiTro() {
+        return vaiTro;
+    }
+
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
     }
 }
