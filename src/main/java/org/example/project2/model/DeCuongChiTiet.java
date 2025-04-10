@@ -15,12 +15,6 @@ public class DeCuongChiTiet {
     @JoinColumn(name = "MaHocPhan", nullable = false)
     private HocPhan hocPhan;
 
-    @Column(name = "MucTieu", columnDefinition = "TEXT")
-    private String mucTieu;
-
-    @Column(name = "NoiDung", columnDefinition = "TEXT")
-    private String noiDung;
-
     @Column(name = "DanhGia", columnDefinition = "TEXT")
     private String danhGia;
 
@@ -48,21 +42,6 @@ public class DeCuongChiTiet {
         this.hocPhan = hocPhan;
     }
 
-    public String getMucTieu() {
-        return mucTieu;
-    }
-
-    public void setMucTieu(String mucTieu) {
-        this.mucTieu = mucTieu;
-    }
-
-    public String getNoiDung() {
-        return noiDung;
-    }
-
-    public void setNoiDung(String noiDung) {
-        this.noiDung = noiDung;
-    }
 
     public String getDanhGia() {
         return danhGia;
